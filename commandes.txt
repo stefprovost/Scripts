@@ -1,0 +1,76 @@
+# commandes.txt
+
+
+1)
+#Infos générales sur le serveur
+Commandes:
+hostname   			              	# Affiche le nom de l'hôte
+hostname -I					# Affiche les adresses IP du système
+uname -r                     			# Affiche la version du noyau
+uname -a					# uname indique des informations sur le système. uname -a affiche tous les paramètres.
+uptime						# Indique le temps d’activité du serveur depuis son dernier démarrage.
+lsb_release -a					# Fournit des informations sur la distribution Linux installée
+free -h						# Donne des informations sur l'utilisation de la mémoire système.
+top						# Affiche les informations en temps réel sur l'utilisation des ressources du système.
+ps aux						# Affiche les processus actifs sur le système.
+ps -ef						# Affiche les processus en cours d'exécution
+
+2)
+#Gestion d’utilisateurs
+Commandes:
+awk -F':' '/\/home/ {print $1}' /etc/passwd  	# Liste des utilisateurs
+awk -F':' '/\/home/ {print $1}' /etc/group   	# Liste des groupes
+w						# Affiche des informations détaillées sur les utilisateurs connectés.
+who						# Affiche les utilisateurs connectés.
+sudo adduser nom_utilisateur			# Ajoute un nouvel utilisateur au système.
+sudo useradd nom_utilisateur			# Ajoute un nouvel utilisateur au système.
+passwd						# Permet à un utilisateur de changer son mot de passe.
+sudo userdel nom_utilisateur			# Supprime un utilisateur du système.
+sudo usermod -aG groupe_user nom_user		# Modifie les propriétés d'un compte utilisateur.
+sudo chage -l nom_utilisateur			# Configure les paramètres d'expiration du compte d'un utilisateur.
+
+3)
+#Gestion du réseau
+Commandes:
+ip addr                 			# Affiche des informations sur les interfaces réseau
+ifconfig                			# Affiche des informations sur les interfaces réseau
+route -n               				# Affiche la table de routage
+netstat -a              			# Affiche les connexions réseau
+nmcli connection show   			# Affiche des détails sur les connexions réseau
+ip addr show | grep 'inet ' | awk '{print $2}'  # Affiche l'adresse IP
+ip route show | grep default | awk '{print $3}' # Affiche la passerelle par défaut
+traceroute adresse_ip_ou_nom_hote		# Trace l'itinéraire qu'un paquet prend pour atteindre une destination.
+ping adresse_ip_ou_nom_hote			# Envoie des paquets ICMP à une adresse IP pour tester la connectivité.
+nslookup nom_hote				# Interroge un serveur DNS pour obtenir des informations sur une adresse IP ou un nom d'hôte.
+dig						# Interroge un serveur DNS pour obtenir des informations sur une adresse IP ou un nom d'hôte.
+
+4)
+#Gestion de fichiers
+Commandes:
+du -h             				# Affiche la taille des fichiers dans le répertoire courant
+ls -l /home       				# Liste des fichiers dans /home
+df -h             				# Informations sur l'espace disque
+ls -l             				# Détails sur les permissions des fichiers
+env | grep PATH   				# Variables d'environnement liées au chemin (PATH)
+chmod permissions fichier			# Modifie les permissions d'un fichier ou d'un répertoire.
+chown utilisateur:groupe fichier		# Change le propriétaire et/ou le groupe d'un fichier ou d'un répertoire.
+
+5)
+#Gestion de disques et de partitions
+Commandes:
+lsblk       					# Liste des partitions
+fdisk -l   					# Informations sur les disques
+df -h      					# Utilisation de l'espace disque
+lsblk      					# Détails sur les partitions
+ls -l      					# Informations sur les fichiers système
+ls -l /home					# Information sur les fichiers personnels
+
+6)
+# Gestion des paquets logiciels
+Commandes:
+sudo apt-get update             		# Met à jour la liste des paquets disponibles
+sudo apt-get upgrade          			# Met à jour tous les paquets installés
+sudo apt-get install <package>  		# Installe un paquet spécifique
+sudo apt-get remove <package>   		# Supprime un paquet spécifique
+sudo apt-cache search <query>   		# Recherche des paquets disponibles
+

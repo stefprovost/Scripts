@@ -1,0 +1,111 @@
+#!/bin/bash
+# -----------------------------------------------------------------------------
+# Script : lab2_script2.sh
+# Auteur : Stephane_Provost
+# Description : Menu administration système Linux
+# Paramètres : aucun
+# Date : 2024-02-04
+# -----------------------------------------------------------------------------
+
+while true; do
+    clear
+    echo "========================================"
+    echo "My Super Admin Menu v0.2"
+    echo "========================================"
+    echo "Faites un choix:"
+    echo "(1) Infos générales sur le serveur"
+    echo "(2) Gestion d'utilisateurs"
+    echo "(3) Gestion du réseau"
+    echo "(4) Gestion de fichiers"
+    echo "(5) Gestion de disques et de partitions"
+    echo "(6) Gestion des paquets logiciels"
+    echo "(Q) Quitter"
+    echo "========================================="
+
+    read -p "Votre choix: " choice
+
+    case "$choice" in
+        1)
+            echo "1. Infos générales sur le serveur"
+            echo "   - Hostname: $(hostname)"
+            echo "   - Version du noyau: $(uname -r)"
+            echo "   - Adresse IP: $(ip addr show | grep 'inet ' | awk '{print $2}')"
+            echo "   - Passerelle par défaut: $(ip route show | grep default | awk '{print $3}')"
+            echo "   - Liste des connexions réseau: $(netstat -a)"
+            read -p "Appuyez sur Enter pour continuer..."
+            ;;
+        2)
+            echo "2. Gestion d'utilisateurs"
+            echo "   - Liste des utilisateurs: $(awk -F':' '/\/home/ {print $1}' /etc/passwd)"
+            echo "   - Liste des groupes: $(awk -F':' '/\/home/ {print $1}' /etc/group)"
+            echo "   - Informations sur les processus: $(ps -ef)"
+            echo "   - Liste des connexions actives: $(who)"
+            echo "   - Détails sur l'utilisation du système: $(uptime)"
+            read -p "Appuyez sur Enter pour continuer..."
+            ;;
+        3)
+            echo "3. Gestion du réseau"
+            echo "   - Adresse IP: $(ip addr)"
+            echo "   - Informations sur les interfaces réseau: $(ifconfig)"
+            echo "   - Routes réseau: $(route)"
+            echo "   - Liste des connexions réseau: $(netstat -a)"
+            echo "   - Détails sur les connexions réseau: $(nmcli connection show)"
+            read -p "Appuyez sur Enter pour continuer..."
+            ;;
+        4)
+            echo "4. Gestion de fichiers"
+            echo "   - Taille des fichiers dans le répertoire courant: $(du -h)"
+            echo "   - Liste des fichiers dans /home: $(ls -l /home)"
+            echo "   - Informations sur l'espace disque: $(df -h)"
+            echo "   - Détails sur les permissions des fichiers: $(ls -l)"
+            echo "   - Variables d'environnement liées au chemin (PATH): $(env | grep PATH)"
+            read -p "Appuyez sur Enter pour continuer..."
+            ;;
+        5)
+            echo "5. Gestion de disques et de partitions"
+            echo "   - Liste des partitions: $(lsblk)"
+            echo "   - Informations sur les disques: $(fdisk -l)"
+            echo "   - Utilisation de l'espace disque: $(df -h)"
+            echo "   - Détails sur les partitions: $(lsblk)"
+            echo "   - Informations sur les fichiers système: $(ls -l)"
+            read -p "Appuyez sur Enter pour continuer..."
+            ;;
+        6)
+            echo "6. Gestion des paquets logiciels"
+            echo "   - Installation de logiciels: (utilisez le gestionnaire de paquets de votre distribution)"
+            echo "   - Mise à jour des logiciels: (utilisez le gestionnaire de paquets de votre distribution)"
+            echo "   - Suppression de logiciels: (utilisez le gestionnaire de paquets de votre distribution)"
+            echo "   - Recherche de logiciels disponibles: (utilisez le gestionnaire de paquets de votre distribution)"
+            echo "   - Affichage des informations sur un paquet: (utilisez le gestionnaire de paquets de votre distribution)"
+            read -p "Appuyez sur Enter pour continuer..."
+            ;;
+        q|Q)
+            echo "Au revoir!"
+            exit 0
+            ;;
+        *)
+            echo "Choix invalide. Veuillez réessayer."
+            read -p "Appuyez sur Enter pour continuer..."
+            ;;
+    esac
+done
+
+
+
+
+
+echo "========================================"
+    echo "My Super Admin Menu v2.0 version améliorée"
+    echo "========================================"
+    echo "Faites un choix:"
+    echo "(1) Configurer l'interface réseau"
+    echo "(2) Définir le nom FQDN de la machine"
+    echo "(3) Mettre à jour le système"
+    echo "(4) Configurer la bannière SSH"
+    echo "(5) Ajouter des utilisateurs et mettre à jour le fichier sudoers"
+    echo "(6) Changer le niveau d'exécution"
+    echo "(7) Désactiver le compte d'un utilisateur"
+    echo "(8) Installer des paquets"
+    echo "(9) Installer et configurer le pare-feu Firewalld"
+    echo "(Q) Quitter"
+    echo "========================================="
